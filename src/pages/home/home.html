@@ -9,7 +9,7 @@
 <ion-content padding>
  
   <ion-list >
-    <ion-item *ngFor="let it of itiner">
+    <ion-item *ngFor="let it of itiner"(tap)="abrirPosts(it.codTipo)">
       <button ion-button>{{it.desc}}</button>
     </ion-item>
   </ion-list>

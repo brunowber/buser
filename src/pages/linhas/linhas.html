@@ -15,4 +15,33 @@
 
 <ion-content padding>
 
+  <ion-list >
+    <ion-item *ngFor="let it of itiner"(tap)="getHorario(it.codLinha)">
+      <button ion-button>{{it.desc}}</button>
+      <div *ngIf="buttonClicked; else horarios"></div>
+      
+      <ng-template    #horarios >
+            <div *ngIf="it.codLinha !== linha; else mostrar"></div>
+      </ng-template>
+
+      <ng-template #mostrar>
+          <div class="row header">
+              <div class="col">{{chegada}}</div>
+              <div class="col">{{saida}}</div>>
+          </div>
+          <ion-item *ngFor="let hor of horario" >
+              
+                <div class="row">
+                  <div class="col">{{hor.horarioSaida}}</div>
+                  <div class="col">{{hor.horarioChegada}}</div>
+                </div>
+          </ion-item>
+      </ng-template>
+    </ion-item>
+  </ion-list>
+  
+
+
+  
+
 </ion-content>

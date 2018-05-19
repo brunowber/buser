@@ -7,11 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ItinerariosProvider } from '../providers/itinerarios/itinerarios';
+import { LinhasPage } from '../pages/linhas/linhas';
+import { HorariosPage } from '../pages/horarios/horarios';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LinhasPage,
+    HorariosPage,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,9 @@ import { ItinerariosProvider } from '../providers/itinerarios/itinerarios';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LinhasPage,
+    HorariosPage,
   ],
   providers: [
     StatusBar,

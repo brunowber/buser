@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ItinerariosProvider } from '../../providers/itinerarios/itinerarios';
+import { HorariosPage } from '../horarios/horarios';
 
 /**
  * Generated class for the LinhasPage page.
@@ -15,7 +17,50 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LinhasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  protected itiner:any
+  protected horario: any
+  public buttonClicked: boolean = true
+  public chegada: any
+  public saida: any 
+  public linha: any 
+
+  constructor(
+    public navCtrl: NavController,
+    public itinerarioProv:ItinerariosProvider,
+    public horarioProv:ItinerariosProvider,
+    public navParams: NavParams,
+    )
+    {
+      this.itinerarioProv.getLinha(this.navParams.get('id')).subscribe( (sucesso)=> {
+        this.itiner = sucesso
+      }, (erro)=>{ 
+        console.error('problema na requisicao' + erro)
+      } )
+    console.log(this.navParams.get('id'))
+  }
+
+  public getHorario(id: any){
+    // this.navCtrl.push(HorariosPage, {id: id})
+    if (this.buttonClicked == true){
+      this.buttonClicked = false
+      
+    }
+    else if (this.buttonClicked == false){
+      this.buttonClicked = true
+    }
+    console.log("botao checado ",this.buttonClicked )
+      
+    this.horarioProv.getHorario(id).subscribe((sucesso)=> {
+      this.horario = sucesso
+      this.linha = id
+      console.log("linha ", this.linha)
+      this.chegada = this.horario[0].localChegada;
+      this.saida = this.horario[0].localSaida;
+    }, (erro)=>{ 
+      console.error('problema na requisicao' + erro)
+    } )
+    
+    
   }
 
   ionViewDidLoad() {
