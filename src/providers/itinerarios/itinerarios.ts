@@ -33,5 +33,8 @@ export class ItinerariosProvider {
     if (id ==2 ){
       return this.http.get('https://api.myjson.com/bins/tknbe') //são Francisco
     }
+    if (id ==3 ){
+      return this.http.get('https://api.myjson.com/bins/13eq8a ') //são Francisco
+    }
   }
 }

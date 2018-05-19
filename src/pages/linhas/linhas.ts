@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ItinerariosProvider } from '../../providers/itinerarios/itinerarios';
 import { HorariosPage } from '../horarios/horarios';
 
@@ -29,6 +29,7 @@ export class LinhasPage {
     public itinerarioProv:ItinerariosProvider,
     public horarioProv:ItinerariosProvider,
     public navParams: NavParams,
+    private loading: LoadingController,
     )
     {
       this.itinerarioProv.getLinha(this.navParams.get('id')).subscribe( (sucesso)=> {
@@ -40,25 +41,28 @@ export class LinhasPage {
   }
 
   public getHorario(id: any){
-    // this.navCtrl.push(HorariosPage, {id: id})
+    let load = this.loading.create({content: 'carregando...'})
     if (this.buttonClicked == true){
       this.buttonClicked = false
-      
+      load.present();
     }
     else if (this.buttonClicked == false){
       this.buttonClicked = true
     }
     console.log("botao checado ",this.buttonClicked )
-      
+
     this.horarioProv.getHorario(id).subscribe((sucesso)=> {
       this.horario = sucesso
       this.linha = id
       console.log("linha ", this.linha)
       this.chegada = this.horario[0].localChegada;
       this.saida = this.horario[0].localSaida;
+      load.dismiss()
+      
     }, (erro)=>{ 
       console.error('problema na requisicao' + erro)
     } )
+    
     
     
   }
