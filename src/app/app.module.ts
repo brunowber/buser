@@ -8,14 +8,12 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ItinerariosProvider } from '../providers/itinerarios/itinerarios';
 import { LinhasPage } from '../pages/linhas/linhas';
-import { HorariosPage } from '../pages/horarios/horarios';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LinhasPage,
-    HorariosPage,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +25,6 @@ import { HorariosPage } from '../pages/horarios/horarios';
     MyApp,
     HomePage,
     LinhasPage,
-    HorariosPage,
   ],
   providers: [
     StatusBar,

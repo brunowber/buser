@@ -11,7 +11,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ItinerariosProvider {
-  private itiner:any = []
 
   constructor(public http: HttpClient) {
     console.log('Hello ItinerariosProvider Provider');
@@ -23,7 +22,7 @@ export class ItinerariosProvider {
     if (id == 1)
       return this.http.get('https://api.myjson.com/bins/1064p6') //Inter urbano
     if (id== 2)
-      return this.http.get('https://api.myjson.com/bins/laakq') //Rodoviario
+      return this.http.get('https://api.myjson.com/bins/1frx8i') //Rodoviario
   }
   public getHorario(id: any){
     console.log("horario ", id)
@@ -35,6 +34,15 @@ export class ItinerariosProvider {
     }
     if (id ==3 ){
       return this.http.get('https://api.myjson.com/bins/13eq8a ') //são Francisco
+    }
+    if (id == 4){
+      return this.http.get('https://api.myjson.com/bins/d53si') //São Francisco rodov
+    }
+    if (id == 5){
+      return this.http.get('https://api.myjson.com/bins/bcsz6') //Enseada
+    }
+    if (id == 6){
+      return this.http.get('https://api.myjson.com/bins/v293m') // Barra do Sul
     }
   }
 }

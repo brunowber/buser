@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ItinerariosProvider } from '../../providers/itinerarios/itinerarios';
-import { HorariosPage } from '../horarios/horarios';
 
 /**
  * Generated class for the LinhasPage page.
